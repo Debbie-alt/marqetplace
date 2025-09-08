@@ -1,3 +1,6 @@
+## MaqertPlace
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -16,21 +19,46 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# MaqertPlace
 
-## Learn More
+**MaqertPlace** is a next-generation **e-commerce platform** designed to build trust in online shopping by ensuring that customers can **verify the authenticity of products** before purchase.  
 
-To learn more about Next.js, take a look at the following resources:
+Unlike traditional marketplaces, MaqertPlace integrates **NAFDAC verification**, helping to prevent the circulation of counterfeit or fake products. Shoppers can buy with confidence, and sellers can showcase their products with legitimacy and transparency.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔎 Why MaqertPlace?
 
-## Deploy on Vercel
+The rise of counterfeit and substandard products has created a lack of trust in online shopping. Many customers are hesitant to buy health, food, and personal care products because they cannot confirm their authenticity.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MaqertPlace solves this problem by:  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Integrating NAFDAC verification** – customers can validate products instantly before checkout.  
+- **Protecting buyers** – ensuring that only safe and approved products are sold.  
+- **Empowering sellers** – enabling legitimate businesses to stand out from counterfeit sellers.  
+
+---
+
+## ✨ Features
+
+- 🛒 **E-commerce Marketplace** – browse, search, and purchase products from trusted sellers.  
+- ✅ **NAFDAC Product Verification** – confirm product authenticity using official verification codes.  
+- 🔍 **Smart Search & Filtering** – find exactly what you need quickly and securely.  
+- 🔒 **Secure Payments** – integrated safe checkout experience.  
+- 📱 **Responsive Design** – optimized for both desktop and mobile devices.  
+- 📦 **Order Tracking** – stay updated from purchase to delivery.  
+- 👤 **User Accounts** – manage orders, saved items, and product history.  
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/MaqertPlace.git
+cd MaqertPlace
+npm install
+
