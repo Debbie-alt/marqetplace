@@ -25,6 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+         <div className='bg-[#91D9EE] w-full text-center py-2.5 text-gray-700'>Experience online buying at a whole new level</div>
+
       <Navbar/>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
