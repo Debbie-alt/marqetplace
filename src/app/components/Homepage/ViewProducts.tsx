@@ -12,7 +12,7 @@ const ViewProducts = () => {
             <p className='text-lg font-medium font-mono trcaking-tight'>Accurately visualize the fabric, fit and silhouette of your products as fast as you can imagine them.</p>
              <button className='px-8 py-3  w-[200px] text-white bg-[#E8912E] text-lg'>Learn More</button>
              </div>
-              <Link href='#' className='underline absolute bottom-0 text-lg'>Shop verified products in store now</Link>
+              <Link href='#' className='underline absolute bottom-0  tracking-wide text-lg'>Shop verified products in store now</Link>
         </div>
 
         <Image src='/outfit.png' width={700} height={600} alt='3d image demo'/>

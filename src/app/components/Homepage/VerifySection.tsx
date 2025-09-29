@@ -5,7 +5,6 @@
 export default function VerifiedSection() {
   return (
     <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between">
-      {/* Left Text */}
       <div className="max-w-xl text-center md:text-left">
         <h2 className="text-3xl md:text-4xl font-medium tracking-wide text-gray-900 mb-6">
           BUY VERIFIED. <br /> SHOP CONFIDENTLY.
@@ -18,7 +17,6 @@ export default function VerifiedSection() {
         </button>
       </div>
 
-      {/* Right Card */}
       <div className="mt-12 md:mt-0 md:ml-12 w-full max-w-md ">
         <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden py-8">
           <div className="px-4 font-medium text-3xl mb-4">

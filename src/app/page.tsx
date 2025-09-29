@@ -1,3 +1,4 @@
+import FeaturedCategories from "./components/Homepage/FeaturesSection";
 import Hero from "./components/Homepage/Hero";
 import VerifiedSection from "./components/Homepage/VerifySection";
 import ViewProducts from "./components/Homepage/ViewProducts";
@@ -8,6 +9,7 @@ export default function Home() {
         <Hero/>
        <ViewProducts/>
        <VerifiedSection/>
+       <FeaturedCategories/>
           
       
     </div>
