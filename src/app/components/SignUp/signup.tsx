@@ -9,12 +9,12 @@ export default function SignupPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <div className="p-5">
-    <nav className="flex  gap-10">
+    <div className="p-5 bg-[#8FD7ED33]">
+    <nav className="flex w-fit items-center text-white gap-10">
       <div>
         <div className='logo flex gap-3 items-center'>
         <div className='px-2 py-1 font-semibold text-3xl bg-[#2D2C2C] text-[#8FD7ED]'>M</div>
-        <h3 className='text-2xl font-semibold'>Marqetplace</h3>
+        <h3 className='text-2xl font-semibold text-black'>Marqetplace</h3>
 
       </div>
       </div>
@@ -26,22 +26,22 @@ export default function SignupPage() {
     >
       <div className="flex w-full max-w-5xl px-6">
         <div className="hidden md:flex flex-col items-start justify-center flex-1">
-          <button className="flex items-center gap-2 w-[300px] py-2 px-4 rounded-full shadow mb-4 hover:bg-gray-50">
-            <Image
-              src="/google-icon.svg"
-              alt="Google"
-              width={20}
-              height={20}
-            />
+          <button className="flex items-center gap-2 w-[300px] py-2 px-2 border rounded-full shadow mb-4 hover:bg-gray-50">
+           <Image
+  src="/google.png"
+  alt="Google"
+  width={25}
+  height={25}
+/>
             <span className="text-gray-700 font-medium">Sign Up with Google</span>
           </button>
 
-          <button className="flex items-center gap-2 w-[300px] py-2 px-4  rounded-full shadow hover:bg-gray-50">
+          <button className="flex items-center gap-2 w-[300px] py-1.5 px-2 border  rounded-full shadow hover:bg-gray-50">
             <Image
-              src="/hedera-icon.svg"
+              src="/hedera.png"
               alt="Hedera"
-              width={20}
-              height={20}
+              width={30}
+              height={30}
             />
             <span className="text-gray-700 font-medium">Sign Up with Hedera</span>
           </button>
