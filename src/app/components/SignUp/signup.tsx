@@ -2,14 +2,27 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { Link } from "react-router-dom";
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
+    <div className="p-5">
+    <nav className="flex  gap-10">
+      <div>
+        <div className='logo flex gap-3 items-center'>
+        <div className='px-2 py-1 font-semibold text-3xl bg-[#2D2C2C] text-[#8FD7ED]'>M</div>
+        <h3 className='text-2xl font-semibold'>Marqetplace</h3>
+
+      </div>
+      </div>
+      <a href="/store" className="ml-auto">Sell on Marqetplace</a>
+      
+    </nav>
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-[#8FD7ED0D] bg-center"
+      className="min-h-screen flex items-center justify-center bg-[#8FD7ED0D] "
     >
       <div className="flex w-full max-w-5xl px-6">
         <div className="hidden md:flex flex-col items-start justify-center flex-1">
@@ -49,12 +62,12 @@ export default function SignupPage() {
               <input
                 type="text"
                 placeholder="First Name"
-                className="w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/2 px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md "
               />
               <input
                 type="text"
                 placeholder="Last Name"
-                className="w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/2 px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md "
               />
             </div>
 
@@ -62,7 +75,7 @@ export default function SignupPage() {
             <input
               type="email"
               placeholder="Email or Phone number"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md "
             />
 
             {/* Password */}
@@ -70,7 +83,7 @@ export default function SignupPage() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2  bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md "
               />
               <button
                 type="button"
@@ -86,7 +99,7 @@ export default function SignupPage() {
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm Password"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2bg-[#8FD7ED33] not-visited: border-b border-b-gray-400 focus:outline-none rounded-md "
               />
               <button
                 type="button"
@@ -127,7 +140,7 @@ export default function SignupPage() {
 
           <p className="text-sm text-gray-600 mt-6 text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-blue-600 underline">
+            <a href="/login" className="">
               Log in here.
             </a>
           </p>
@@ -142,6 +155,7 @@ export default function SignupPage() {
           Privacy Policy
         </a>
       </div>
+    </div>
     </div>
   );
 }
