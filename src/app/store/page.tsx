@@ -1,10 +1,6 @@
-import React from 'react'
-
-const Storepage = () => {
+import RootLayout from "../layout"; 
+export default function StorePage() {
   return (
-   <>
-   </>
-  )
+  <></>
+  );
 }
-
-export default Storepage
