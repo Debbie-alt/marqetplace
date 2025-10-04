@@ -1,5 +1,7 @@
 import React from "react";
 import { Heart, ShoppingCart } from "lucide-react";
+import { HeartIcon } from "lucide-react";
+import Image from "next/image";
 
 const ProductShowcase = () => {
   const products = [
@@ -7,76 +9,74 @@ const ProductShowcase = () => {
       id: 1,
       title: "Men Hoodie: Husband Material",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Hoodie",
+      image: "/outfit.png",
     },
     {
       id: 2,
       title: "NIVEA His & Hers Pack",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Body+Care",
+      image: "/outfit.png",
     },
     {
       id: 3,
       title: "Opk Wristwatch",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Watch",
+      image: "/outfit.png",
     },
     {
       id: 4,
       title: "Men Agbada: Husband Material",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Agbada",
+      image: "/outfit.png",
     },
     {
       id: 5,
       title: "Men Hoodie",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Hoodie",
+      image: "/outfit.png",
     },
     {
       id: 6,
       title: "Men Hoodie",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Hoodie",
+      image: "/outfit.png",
     },
     {
       id: 7,
       title: "Men Hoodie",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Hoodie",
+      image: "/outfit.png",
     },
     {
       id: 8,
       title: "Men Hoodie",
       price: 15,
-      image: "https://via.placeholder.com/300x300.png?text=Hoodie",
+      image: "/outfit.png",
     },
   ];
 
   return (
-    <div className="p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    <section className="flex flex-col justify-center">
+    <div className="px-14 py-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
       {products.map((product) => (
         <div
           key={product.id}
           className="relative flex flex-col border border-gray-200 rounded-lg p-3 bg-white hover:shadow-md transition"
         >
-          {/* Top Right Icons */}
           <div className="absolute top-3 right-3 flex flex-col gap-2">
-            <button className="p-1 bg-white rounded-full border hover:bg-gray-50">
-              <Heart size={16} className="text-amber-500" />
-            </button>
-            <button className="p-1 bg-white rounded-full border hover:bg-gray-50">
-              <ShoppingCart size={16} className="text-gray-700" />
-            </button>
+              <ShoppingCart size={30} className="text-gray-800" role="button"/>
           </div>
 
-          {/* Image */}
-          <div className="w-full h-52 flex items-center justify-center mb-3">
+          
+          <div className="w-full h-64 flex flex-col items-center justify-center mb-3">
             <img
               src={product.image}
               alt={product.title}
-              className="object-contain h-full"
+              className="object-cover w-full h-full"
             />
+            <div className="w-full flex justify-end">
+                  <HeartIcon size={18} role='button' className="text-amber-500" />
+            </div>              
           </div>
 
           {/* Product Info */}
@@ -87,12 +87,19 @@ const ProductShowcase = () => {
           </div>
 
           {/* Button */}
-          <button className="mt-3 bg-[#294952] text-white py-2 rounded-md text-sm font-medium hover:bg-[#1f373e]">
-            Add to Cart
+          <div className="flex items-end justify-center w-full gap-3">
+              <button className="mt-6 bg-[#294952] text-white py-2 w-3/4  px-6 rounded-md text-sm font-medium hover:bg-[#1f373e]">
+            Add to Cart        
           </button>
+            <Image  src='/3d.png' alt='3d icon' width={35} height={35}/>
+            </div>
         </div>
       ))}
+
     </div>
+       <button className="bg-[#E8912E] hover:bg-[#E8912E]/90 transition-all ease-in-out mx-auto mt-12 mb-12 text-white rounded-md px-14 py-2.5 ">Explore More</button>
+
+    </section>
   );
 };
 

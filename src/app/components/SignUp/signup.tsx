@@ -9,7 +9,9 @@ export default function SignupPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <div className="p-5 bg-[#8FD7ED33]">
+    <div className="px-16 py-6 bg-[#8FD7ED] relative"
+     style={{background:"url('/signup.png')"}}
+    >
     <nav className="flex w-fit items-center text-white gap-10">
       <div>
         <div className='logo flex gap-3 items-center'>
@@ -26,24 +28,24 @@ export default function SignupPage() {
     >
       <div className="flex w-full max-w-5xl px-6">
         <div className="hidden md:flex flex-col items-start justify-center flex-1">
-          <button className="flex items-center gap-2 w-[300px] py-2 px-2 border rounded-full shadow mb-4 hover:bg-gray-50">
+          <button className="flex items-center justify-center gap-2 w-[300px] py-2 px-2 border border-gray-700 rounded-full shadow mb-4 bg-gray-50">
            <Image
-  src="/google.png"
-  alt="Google"
-  width={25}
-  height={25}
-/>
-            <span className="text-gray-700 font-medium">Sign Up with Google</span>
+            src="/google.png"
+            alt="Google"
+            width={25}
+            height={25}
+          />
+            <span className="text-gray-700 text-center font-medium">Sign Up with Google</span>
           </button>
 
-          <button className="flex items-center gap-2 w-[300px] py-1.5 px-2 border  rounded-full shadow hover:bg-gray-50">
+          <button className="flex items-center justify-center gap-2 w-[300px] py-1.5 px-2 border border-gray-700 rounded-full shadow text-center bg-gray-50">
             <Image
               src="/hedera.png"
               alt="Hedera"
               width={30}
               height={30}
             />
-            <span className="text-gray-700 font-medium">Sign Up with Hedera</span>
+            <span className="text-gray-700 font-medium text-center">Sign Up with Hedera</span>
           </button>
         </div>
 
@@ -147,7 +149,7 @@ export default function SignupPage() {
         </div>
       </div>
 
-      <div className="absolute bottom-4 left-6 text-sm text-white space-x-6">
+      <div className="absolute bottom-4 left-6 text-sm textite space-x-6 px-10">
         <a href="#" className="hover:underline">
           Terms of Use
         </a>
