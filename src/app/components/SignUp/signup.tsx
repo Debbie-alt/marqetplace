@@ -8,7 +8,7 @@ export default function SignupPage() {
 
   return (
  <div
-  className="px-16 py-6 relative min-h-screen bg-cover  bg-no-repeat"
+  className=" px-4 md:px-16 py-6 relative min-h-screen bg-cover  bg-no-repeat"
  style={{
   backgroundImage: `
     linear-gradient(
@@ -27,38 +27,38 @@ export default function SignupPage() {
             <div className="px-2 py-1 font-semibold text-3xl bg-[#2D2C2C] text-[#8FD7ED]">
               M
             </div>
-            <h3 className="text-2xl font-semibold text-white">
+            <h3 className=" text-xl sm:text-2xl font-semibold text-white">
               Marqetplace
             </h3>
           </div>
         </div>
-        <a href="/store" className="ml-auto text-white hover:underline">
+        <a href="/store" className="ml-auto text-sm sm:text-base text-center text-white hover:underline">
           Sell on Marqetplace
         </a>
       </nav>
 
       {/* Main Content */}
       <div className="min-h-[90vh] flex items-center justify-center bg-[#8FD7ED0D]">
-        <div className="flex w-full max-w-5xl px-6">
+        <div className="flex w-full max-w-5xl ">
           {/* Left side */}
           <div className="hidden md:flex flex-col items-start justify-center flex-1">
             <button className="flex items-center justify-center gap-2 w-[300px] py-2 px-2 border border-gray-700 rounded-full shadow mb-4 bg-gray-50">
               <Image src="/google.png" alt="Google" width={25} height={25} />
-              <span className="text-gray-700 text-center font-medium">
+              <span className="text-gray-700 hover:opacity-80  text-center font-medium">
                 Sign Up with Google
               </span>
             </button>
 
             <button className="flex items-center justify-center gap-2 w-[300px] py-1.5 px-2 border border-gray-700 rounded-full shadow text-center bg-gray-50">
               <Image src="/hedera.png" alt="Hedera" width={30} height={30} />
-              <span className="text-gray-700 font-medium text-center">
+              <span className="text-gray-700 hover:opacity-80  font-medium text-center">
                 Sign Up with Hedera
               </span>
             </button>
           </div>
 
           {/* Right Section (Form) */}
-          <div className="bg-white shadow-lg px-14 py-16  w-full max-w-xl rounded-md">
+          <div className="bg-white shadow-lg px-5 sm:px-10 mt-6 md:mt-0 md:px-14 py-16  w-full max-w-xl rounded-md">
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">
               Create Account
             </h2>
@@ -66,7 +66,7 @@ export default function SignupPage() {
               Please fill in this form to create an account on Marqetplace!
             </p>
 
-            <form className="space-y-4">
+            <form className="  space-y-4">
               {/* First / Last Name */}
               <div className="flex gap-3">
                 <input

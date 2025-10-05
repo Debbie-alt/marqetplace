@@ -1,3 +1,4 @@
+import Footer from "../components/Homepage/Footer";
 import ProductGrid from "../components/Store/ProductGrid";
 import ProductShowcase from "../components/Store/ProductShowcase";
 import RootLayout from "../layout"; 
@@ -6,6 +7,7 @@ export default function StorePage() {
   <>
      <ProductGrid/>
      <ProductShowcase/>
+     <Footer/>
   </>
   );
 }
