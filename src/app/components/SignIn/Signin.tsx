@@ -79,7 +79,7 @@ export default function SigninPage() {
 
               <button
                 type="submit"
-                className="w-fit px-7 bg-[#E8912E] text-white py-2  text-lg rounded-full font-medium hover:bg-yellow-600 transition"
+                className="w-fit flex items-center self-center px-10 mb-2 mt-8 bg-[#E8912E] text-white py-2 mx-auto text-lg rounded-full font-medium hover:bg-yellow-600 transition"
               >
                 Sign In
               </button>
