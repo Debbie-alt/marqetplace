@@ -1,6 +1,7 @@
-// components/FeaturedCategories.tsx
+'use client';
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 type Product = {
   id: number;
@@ -37,13 +38,14 @@ const products: Product[] = [
 ];
 
 export default function FeaturedCategories() {
+  const pathname = usePathname();
   return (
-    <div className="bg-[#E1E2E1]">
-    <section className="w-full max-w-7xl mx-auto py-12 px-4">
+    <div className={` ${pathname === '/3dview' ? 'bg-white' : ' bg-[#E1E2E1]'}`}>
+    <section className={`w-full ${pathname === '/3dview' ? 'w-full px-14' : ' max-w-7xl'} mx-auto py-12 px-4`}>
       <h2 className="text-lg font-semibold mb-6">
-        Featured Popular Categories
-      </h2>
-
+        {pathname === '/3dview' ? 'Explore Similar Products' : ' Featured Popular Categories'}
+       
+    </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {products.map((product) => (
           <div key={product.id} className="flex flex-col items-center">
