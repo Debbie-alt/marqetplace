@@ -39,28 +39,12 @@ export default function SigninPage() {
 
       {/* Main Content */}
       <div className="min-h-[90vh] flex items-center justify-center bg-[#8FD7ED0D]">
-        <div className="flex w-full max-w-5xl ">
+        <div className="flex w-full mx-auto justify-center  ">
           {/* Left side */}
-          <div className="hidden md:flex flex-col items-start justify-center flex-1">
-            <button className="flex items-center justify-center gap-2 w-[300px] py-2 px-2 border border-gray-700 rounded-full shadow mb-4 bg-gray-50">
-              <Image src="/google.png" alt="Google" width={25} height={25} />
-              <span className="text-gray-700 hover:opacity-80  text-center font-medium">
-                Sign Up with Google
-              </span>
-            </button>
-
-            <button className="flex items-center justify-center gap-2 w-[300px] py-1.5 px-2 border border-gray-700 rounded-full shadow text-center bg-gray-50">
-              <Image src="/hedera.png" alt="Hedera" width={30} height={30} />
-              <span className="text-gray-700 hover:opacity-80  font-medium text-center">
-                Sign Up with Hedera
-              </span>
-            </button>
-          </div>
-
-          {/* Right Section (Form) */}
+          
           <div className="bg-white shadow-lg px-5 sm:px-10 mt-6 md:mt-0 md:px-14 py-16  w-full max-w-xl rounded-md">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">
-              Create Account
+            <h2 className="text-2xl font-semibold text-gray-900 mb-2 text-center">
+             Sign In
             </h2>
             <p className="text-gray-600 text-sm mb-6">
               Please fill in this form to create an account on Marqetplace!
