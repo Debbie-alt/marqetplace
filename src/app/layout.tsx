@@ -24,7 +24,7 @@ export default function RootLayout({
   const pathname = usePathname();
 
   const showBanner = pathname === "/store";
-  const showNavbar = pathname !== "/signup"; // hide on /signup
+  const showNavbar = pathname !== "/signup" && pathname !== '/signin'; // hide on /signup
 
   return (
     <html lang="en">

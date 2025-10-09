@@ -10,7 +10,8 @@ const Navbar = () => {
   return (
      <nav className='w-full flex items-center justify-between px-16 py-4 '>
       <div className='logo flex gap-3 items-center'>
-        <div className='px-3 py-2 font-semibold text-3xl bg-[#2D2C2C] text-[#8FD7ED]'>M</div>
+        <div className='px-3 py-2 font-semibold text-3
+        xl bg-[#2D2C2C] text-[#8FD7ED]'>M</div>
         <h3 className='text-2xl font-semibold'>Marqetplace</h3>
 
       </div>
