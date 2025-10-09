@@ -85,6 +85,27 @@ export default function SigninPage() {
               </button>
             </form>
 
+            <div className="text-center flex items-center gap-4">
+              <hr className="w-full border-gray-400 mt-6" />
+              <span className="text-gray-500 mt-6">
+                 OR
+                 </span>
+              <hr className="w-full border-gray-400 mt-6" />
+            </div>
+
+            <button className="flex items-center justify-center gap-2  mt-6 w-3/4 mx-auto py-2 px-2 border border-gray-700 rounded-full shadow  bg-gray-50">
+              <Image src="/google.png" alt="Google" width={25} height={25} />
+              <span className="text-gray-700 hover:opacity-80  text-center font-medium">
+                Sign In with Google
+              </span>
+            </button>
+            <div className="text-sm text-gray-600 mt-12 text-center">
+              Don't have an account?{" "}
+              <a href="/signup" className="text-[#2BBCE8] hover:underline">
+                Sign up 
+              </a>
+            </div>
+
            
           </div>
         </div>
