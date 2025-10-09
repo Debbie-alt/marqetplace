@@ -43,32 +43,19 @@ export default function SigninPage() {
           {/* Left side */}
           
           <div className="bg-white shadow-lg px-5 sm:px-10 mt-6 md:mt-0 md:px-14 py-16  w-full max-w-xl rounded-md">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2 text-center">
+            <h2 className="text-4xl font-medium text-gray-900 mb-2 text-center">
              Sign In
             </h2>
             <p className="text-gray-600 text-sm mb-6">
-              Please fill in this form to create an account on Marqetplace!
+             Welcome Back to Marqetplace!
             </p>
 
             <form className="  space-y-4">
-              {/* First / Last Name */}
-              <div className="flex gap-3">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="w-1/2 px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="w-1/2 px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
-                />
-              </div>
+              
 
-              {/* Email */}
               <input
                 type="email"
-                placeholder="Email or Phone number"
+                placeholder="Hedera ID/Email"
                 className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
               />
 
@@ -88,58 +75,20 @@ export default function SigninPage() {
                 </button>
               </div>
 
-              {/* Confirm Password */}
-              <div className="relative">
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Confirm Password"
-                  className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
-                />
-                <button
-                  type="button"
-                  onClick={() =>
-                    setShowConfirmPassword(!showConfirmPassword)
-                  }
-                  className="absolute right-3 top-2 text-sm text-gray-400"
-                >
-                  {showConfirmPassword ? "Hide" : "Show"}
-                </button>
-              </div>
+             
 
-              {/* Terms */}
-              <div className="flex items-center text-sm">
-                <input type="checkbox" id="terms" className="mr-2" />
-                <label htmlFor="terms" className="text-gray-700">
-                  <span className="text-[#2BBCE8]">I accept the </span>
-                  <a href="#" className="underline">
-                    Terms of Use
-                  </a>{" "}
-                  &{" "}
-                  <a href="#" className="underline">
-                    Privacy Policy
-                  </a>.
-                </label>
-              </div>
-
-              {/* Submit */}
               <button
                 type="submit"
-                className="w-fit px-7 bg-[#E8912E] text-white py-2 rounded-full font-medium hover:bg-yellow-600 transition"
+                className="w-fit px-7 bg-[#E8912E] text-white py-2  text-lg rounded-full font-medium hover:bg-yellow-600 transition"
               >
-                Sign Up
+                Sign In
               </button>
             </form>
 
-            <p className="text-sm text-gray-600 mt-8 text-center">
-              Already have an account?{" "}
-              <a href="/login" className="text-[#2BBCE8] hover:underline">
-                Log in here.
-              </a>
-            </p>
+           
           </div>
         </div>
 
-        {/* Footer links */}
         <div className="absolute bottom-4 left-6 text-sm text-white space-x-6 px-10">
           <a href="#" className="hover:underline">
             Terms of Use
