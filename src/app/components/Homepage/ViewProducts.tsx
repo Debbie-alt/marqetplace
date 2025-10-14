@@ -10,7 +10,7 @@ const ViewProducts = () => {
              <div className='space-y-3'>
                        <h2 className='text-4xl font-medium '> VIEW PRODUCTS IN 3D IN REAL-TIME</h2>
             <p className='text-lg font-medium font-mono trcaking-tight'>Accurately visualize the fabric, fit and silhouette of your products as fast as you can imagine them.</p>
-             <button className='px-8 py-3  w-[200px] text-white bg-[#E8912E] text-lg'>Learn More</button>
+             <button className='px-8 py-3  w-[200px] text-white bg-[#E8912E] hover:bg-[#E8912E]/90 cursor-pointer text-lg'>Learn More</button>
              </div>
               <Link href='#' className='underline absolute bottom-0  tracking-wide text-lg'>Shop verified products in store now</Link>
         </div>

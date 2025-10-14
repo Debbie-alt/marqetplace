@@ -87,8 +87,8 @@ const ProductShowcase = () => {
           </div>
 
           {/* Button */}
-          <div className="flex items-end justify-center w-full gap-3">
-              <button className="mt-6 bg-[#294952] text-white py-2 w-3/4  px-6 rounded-md text-sm font-medium hover:bg-[#1f373e]">
+          <div className="flex items-end justify-center w-full gap-3" role="button">
+              <button className="mt-6 bg-[#294952] cursor-pointer text-white py-2 w-3/4  px-6 rounded-md text-sm font-medium hover:bg-[#1f373e]">
             Add to Cart        
           </button>
             <Image  src='/3d.png' alt='3d icon' width={35} height={35}/>

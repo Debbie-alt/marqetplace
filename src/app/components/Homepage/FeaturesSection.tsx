@@ -79,7 +79,7 @@ export default function FeaturedCategories() {
       </div>
 
       <div className="flex justify-center mt-16">
-        <button className="bg-[#E8912E] hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-md shadow-md">
+        <button className="bg-[#E8912E] hover:bg-yellow-600 text-white font-medium px-6 py-3 rounded-md shadow-md">
           Explore More Product
         </button>
       </div>
