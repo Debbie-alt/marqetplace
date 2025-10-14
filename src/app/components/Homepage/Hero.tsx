@@ -22,7 +22,7 @@ const Hero = () => {
         alt="hero image" 
         width={1300}
         height={200}
-        className="object-contain mt-5" 
+        className="object-contain mt-5 opacity-50" 
         priority
       />            
 

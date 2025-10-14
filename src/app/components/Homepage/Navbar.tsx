@@ -32,7 +32,7 @@ const Navbar = () => {
         <Link  href="/#" className='cursor-pointer tracking-wider font-light'>About</Link>
         <Link  href="/#" className='cursor-pointer tracking-wider font-light'>Support</Link>
         <Link  href="/#" className='cursor-pointer tracking-wider inline-flex items-center gap-2'> 
-        <Image src='/cart-icon.png' alt='cart icon' width={30} height={10}/> Cart</Link>
+        <Image src='/cart-icon.png' alt='cart icon' width={20} height={10}/> Cart</Link>
 
         <div className='bg-black rounded-full w-8 h-8 '></div>
 
