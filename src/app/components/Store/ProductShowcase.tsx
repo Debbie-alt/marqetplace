@@ -61,14 +61,14 @@ const ProductShowcase = () => {
       {products.map((product) => (
         <div
           key={product.id}
-          className="relative flex flex-col border border-gray-200 rounded-lg p-3 bg-white hover:shadow-md transition"
+          className="relative flex flex-col border border-gray-200 rounded-lg p-3 bg-white  transition hover:scale-105 hover:transition-transform duration-300 ease-in-out hover:shadow-lg  overflow-hidden"
         >
           <div className="absolute top-3 right-3 flex flex-col gap-2">
               <ShoppingCart size={30} className="text-gray-800" role="button"/>
           </div>
 
           
-          <div className="w-full h-64 flex flex-col items-center justify-center mb-3">
+          <div className="w-full h-64 flex flex-col items-center justify-center mb-3 ">
             <img
               src={product.image}
               alt={product.title}
