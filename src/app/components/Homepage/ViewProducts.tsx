@@ -4,12 +4,12 @@ import Link from 'next/link'
 
 const ViewProducts = () => {
   return (
-    <div className='bg-[#8FD7ED40] flex items-center justify-center w-full pb-20 relative'>
-        <div className='text  flex flex-col  max-w-md justify-between' >
+    <div className='bg-[#8FD7ED40] flex flex-col md:flex-row px-5 py-20 md:pt-0 items-center justify-center w-full pb-20 relative'>
+        <div className='text  flex flex-col  max-w-md md:justify-between' >
      
              <div className='space-y-3'>
-                       <h2 className='text-4xl font-medium '> VIEW PRODUCTS IN 3D IN REAL-TIME</h2>
-            <p className='text-lg font-medium font-mono trcaking-tight'>Accurately visualize the fabric, fit and silhouette of your products as fast as you can imagine them.</p>
+                       <h2 className=' text-3xl sm:text-4xl font-medium '> VIEW PRODUCTS IN 3D IN REAL-TIME</h2>
+            <p className='text-lg font-medium font-mono  trcaking-tight'>Accurately visualize the fabric, fit and silhouette of your products as fast as you can imagine them.</p>
              <button className='px-8 py-3  w-[200px] text-white bg-[#E8912E] hover:bg-[#E8912E]/90 cursor-pointer text-lg'>Learn More</button>
              </div>
               <Link href='#' className='underline absolute bottom-0  tracking-wide text-lg'>Shop verified products in store now</Link>

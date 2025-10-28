@@ -57,7 +57,7 @@ const ProductShowcase = () => {
 
   return (
     <section className="flex flex-col justify-center">
-    <div className="px-14 py-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
+    <div className=" px-6 md:px-14 py-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
       {products.map((product) => (
         <div
           key={product.id}
@@ -87,8 +87,8 @@ const ProductShowcase = () => {
           </div>
 
           {/* Button */}
-          <div className="flex items-end justify-center w-full gap-3" role="button">
-              <button className="mt-6 bg-[#294952] cursor-pointer text-white py-2 w-3/4  px-6 rounded-md text-sm font-medium hover:bg-[#1f373e]">
+          <div className="flex flex-col md:flex-row  items-end justify-center w-full gap-3" role="button">
+              <button className="mt-6 bg-[#294952] cursor-pointer text-white py-2 w-full md:w-3/4  px-6 rounded-md text-xs  sm:text-sm font-medium hover:bg-[#1f373e]">
             Add to Cart        
           </button>
             <Image  src='/3d.png' alt='3d icon' width={35} height={35}/>

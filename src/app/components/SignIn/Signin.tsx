@@ -8,7 +8,7 @@ export default function SigninPage() {
 
   return (
  <div
-  className=" px-4 md:px-16 py-6 relative min-h-screen bg-cover  bg-no-repeat"
+  className=" px-4 md:px-16 py-26 md:py-6 relative min-h-screen bg-cover  bg-no-repeat"
  style={{
   backgroundImage: `
     linear-gradient(
@@ -21,7 +21,7 @@ export default function SigninPage() {
 }}
 >
       {/* Top Navigation */}
-      <nav className="flex w-fit items-center text-white gap-10">
+      <nav className="flex flex-col sm:flex-row gap-4  w-fit items-center text-white md:gap-10">
         <div>
           <div className="logo flex gap-3 items-center">
             <div className="px-2 py-1 font-semibold text-3xl bg-[#2D2C2C] text-[#8FD7ED]">

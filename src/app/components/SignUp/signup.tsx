@@ -8,7 +8,7 @@ export default function SignupPage() {
 
   return (
  <div
-  className=" px-4 md:px-16 py-6 relative min-h-screen bg-cover  bg-no-repeat"
+  className=" px-4 md:px-16 py-26 md:py-6 relative min-h-screen bg-cover  bg-no-repeat"
  style={{
   backgroundImage: `
     linear-gradient(
@@ -21,7 +21,7 @@ export default function SignupPage() {
 }}
 >
       {/* Top Navigation */}
-      <nav className="flex w-fit items-center text-white gap-10">
+      <nav className="flex flex-col sm:flex-row w-fit items-center text-white gap-4 sm:gap-10">
         <div>
           <div className="logo flex gap-3 items-center">
             <div className="px-2 py-1 font-semibold text-3xl bg-[#2D2C2C] text-[#8FD7ED]">
@@ -39,7 +39,7 @@ export default function SignupPage() {
 
       {/* Main Content */}
       <div className="min-h-[90vh] flex items-center justify-center bg-[#8FD7ED0D]">
-        <div className="flex w-full max-w-5xl ">
+        <div className="flex w-full gap-4 mt-4 max-w-5xl ">
           {/* Left side */}
           <div className="hidden md:flex flex-col items-start justify-center flex-1">
             <button className="flex items-center justify-center gap-2 w-[300px] py-2 px-2 border border-gray-700 rounded-full shadow mb-4 bg-gray-50">
@@ -155,8 +155,7 @@ export default function SignupPage() {
           </div>
         </div>
 
-        {/* Footer links */}
-        <div className="absolute bottom-4 left-6 text-sm text-white space-x-6 px-10">
+        <div className="absolute bottom mb-8 sm:bottom-4 left-6 text-sm text-white space-x-6 px-10">
           <a href="#" className="hover:underline">
             Terms of Use
           </a>
