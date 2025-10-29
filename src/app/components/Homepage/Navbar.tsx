@@ -64,9 +64,9 @@ const Navbar = () => {
       >
         {isStore ? (
           <>
-            <Link href="/#" className='tracking-wider font-light hover:text-[#8FD7ED]' onClick={() => setOpen(false)}>About</Link>
-            <Link href="/#" className='tracking-wider font-light hover:text-[#8FD7ED]' onClick={() => setOpen(false)}>Support</Link>
-            <Link href="/#" className='tracking-wider inline-flex items-center gap-2 hover:text-[#8FD7ED]' onClick={() => setOpen(false)}>
+            <Link href="/about" className='tracking-wider font-light hover:text-[#8FD7ED]' onClick={() => setOpen(false)}>About</Link>
+            <Link href="/support" className='tracking-wider font-light hover:text-[#8FD7ED]' onClick={() => setOpen(false)}>Support</Link>
+            <Link href="/store" className='tracking-wider inline-flex items-center gap-2 hover:text-[#8FD7ED]' onClick={() => setOpen(false)}>
               <Image src='/cart-icon.png' alt='cart icon' width={20} height={10}/> Cart
             </Link>
           </>
