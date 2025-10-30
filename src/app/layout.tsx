@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Homepage/Navbar";
 import { usePathname } from "next/navigation";
+import { AuthProvider } from "@/context/Authcontext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +25,10 @@ export default function RootLayout({
   const pathname = usePathname();
 
   const showBanner = pathname === "/store";
-  const showNavbar = pathname !== "/signup" && pathname !== '/signin'; // hide on /signup
+  const showNavbar = pathname !== "/signup" && pathname !== '/signin' && pathname !== '/app/sellerupload'; // hide on /signup
 
   return (
+    <AuthProvider>
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {showBanner && (
@@ -38,5 +40,6 @@ export default function RootLayout({
         {children}
       </body>
     </html>
+    </AuthProvider>
   );
 }

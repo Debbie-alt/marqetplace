@@ -1,24 +1,57 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { getAuth, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { auth ,provider} from "@/config/firebaseConfig";
+import {useRouter} from "next/navigation";
 
 export default function SigninPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const  [email, setEmail]  = useState('');
+    const [password, setPassword] = useState('');
+const router   = useRouter()
+
+
+  const handleSignin = async (e:React.FormEvent)=>  {
+       e.preventDefault()
+       try{
+        const userCredential = await signInWithEmailAndPassword(auth, email, password)
+        console.log('signedin', userCredential.user)
+        alert('signedin successfully')
+        router.push('/app/sellerupload')
+       }
+       catch (error: any) {
+      console.error(error)
+      alert(error.message)
+    }
+
+  }
+  const googleSignin  =  async ()  =>{
+     try {
+    const result = await signInWithPopup(auth, provider)
+    console.log('Google signed in:', result.user)
+    alert(`Welcome ${result.user.displayName}`)
+    router.push('/app/sellerupload')
+  } catch (error: any) {
+    console.error(error)
+    alert(error.message)
+  }
+  }
 
   return (
  <div
   className=" px-4 md:px-16 py-26 md:py-6 relative min-h-screen bg-cover  bg-no-repeat"
- style={{
-  backgroundImage: `
-    linear-gradient(
-       to top right,
-      rgba(92, 164, 184, 0.45),
-      rgba(41, 73, 82, 0.8)
-    ),
-    url('/signup.png')
-  `,
-}}
+          style={{
+        backgroundImage: `
+          linear-gradient(
+            to top right,
+            rgba(92, 164, 184, 0.45),
+            rgba(41, 73, 82, 0.8)
+          ),
+          url('/signup.png')
+        `,
+      }}
 >
       {/* Top Navigation */}
       <nav className="flex flex-col sm:flex-row gap-4  w-fit items-center text-white md:gap-10">
@@ -50,11 +83,15 @@ export default function SigninPage() {
              Welcome Back to Marqetplace!
             </p>
 
-            <form className="  space-y-4">
+            <form className="  space-y-4" onSubmit={handleSignin}>
               
 
               <input
                 type="email"
+                  value={email}
+                  onChange={(e)=> {
+                     setEmail(e.target.value)
+                  }}
                 placeholder="Hedera ID/Email"
                 className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
               />
@@ -64,6 +101,10 @@ export default function SigninPage() {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
+                  value={password}
+                  onChange={(e)=> {
+                     setPassword(e.target.value)
+                  }}
                   className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
                 />
                 <button
@@ -93,7 +134,7 @@ export default function SigninPage() {
               <hr className="w-full border-gray-400 mt-6" />
             </div>
 
-            <button className="flex items-center justify-center gap-2  mt-6 w-3/4 mx-auto py-2 px-2 border border-gray-700 rounded-full shadow  bg-gray-50">
+            <button onClick={googleSignin} className="flex items-center justify-center gap-2  mt-6 w-3/4 mx-auto py-2 px-2 border border-gray-700 rounded-full shadow  bg-gray-50">
               <Image src="/google.png" alt="Google" width={25} height={25} />
               <span className="text-gray-700 hover:opacity-80  text-center font-medium">
                 Sign In with Google
