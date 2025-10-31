@@ -1,4 +1,3 @@
-// app/components/FAQSection.tsx
 "use client";
 
 import React from "react";
@@ -6,20 +5,17 @@ import { ChevronDown } from "lucide-react";
 
 const FAQSection = () => {
   return (
-    <section className="bg-white py-14 px-8 md:px-24 flex flex-col md:flex-row justify-between items-start">
-      {/* Left Column */}
-      <div className="w-full md:w-1/3 mb-8 md:mb-0">
-        <h2 className="text-lg font-medium text-gray-800 leading-tight">
+    <section className="max-w-5xl relative mx-auto py-14 px-8 md:px-24 flex flex-col md:flex-row justify-center  items-start">
+      <div className="w-full md:w-1/3 mb-8 md:mb-20">
+        <h2 className="text-4xl font-medium text-gray-800 leading-tight">
           Commonly <br /> asked <br /> Question
         </h2>
       </div>
 
-      {/* Right Column */}
-      <div className="w-full md:w-2/3 space-y-6">
-        {/* Question 1 */}
+      <div className="w-full md:w-2/3 space-y-6 mb-10">
         <div>
           <div className="flex items-start gap-2">
-            <span className="text-black text-sm font-medium leading-relaxed">
+            <span className="text-black text-lg  font-medium leading-relaxed">
               • Can I buy products from sellers outside my state?
             </span>
             <ChevronDown className="w-4 h-4 text-gray-600 mt-[2px]" />
@@ -31,10 +27,9 @@ const FAQSection = () => {
           </p>
         </div>
 
-        {/* Question 2 */}
         <div>
           <div className="flex items-start gap-2">
-            <span className="text-black text-sm font-medium leading-relaxed">
+            <span className="text-black text-lg  font-medium leading-relaxed">
               • How can I verify if a product is authentic?
             </span>
             <ChevronDown className="w-4 h-4 text-gray-600 mt-[2px]" />
@@ -47,10 +42,9 @@ const FAQSection = () => {
           </p>
         </div>
 
-        {/* Question 3 */}
         <div>
           <div className="flex items-start gap-2">
-            <span className="text-black text-sm font-medium leading-relaxed">
+            <span className="text-black text-lg font-medium leading-relaxed">
               • How does the 3D product viewing feature work?
             </span>
             <ChevronDown className="w-4 h-4 text-gray-600 mt-[2px]" />
@@ -64,8 +58,7 @@ const FAQSection = () => {
           </p>
         </div>
 
-        {/* Footer Contact Info */}
-        <div className="flex flex-col md:flex-row justify-start gap-12 pt-8 text-sm text-gray-700">
+        <div className="flex flex-col md:flex-row mt-12 justify-start w-full md:absolute md:bottom-0 left-0 gap-12 pt-8 text-sm text-gray-700">
           <div>
             <p className="font-medium">Contact</p>
             <p className="text-gray-500">+2348105236938</p>

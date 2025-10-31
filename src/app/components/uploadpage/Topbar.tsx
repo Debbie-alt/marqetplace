@@ -22,7 +22,7 @@ const TopBar = ({ onMenuClick }: TopBarProps) => {
       </button>
 
       {/* Center: Title */}
-      <h2 className="text-sm font-medium text-gray-700 py-2 px-5 mx-auto rounded-sm text-center border border-gray-400">
+      <h2 className="text-sm hidden sm:block font-medium text-gray-700 py-2 px-5 mx-auto rounded-sm text-center border border-gray-400">
         Business Management
       </h2>
 

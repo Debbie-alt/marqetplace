@@ -16,12 +16,26 @@ type Product = {
   updatedAt: string;
 };
 
+  const tabs :string []= [
+  "All",
+  "Fashion",
+  "Cloth",
+  "Electronics",
+  "Cosmetics",
+  "Drugs",
+  "Devices",
+];
+
 export default function StorePage() { 
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState('');
 
+  const [activeTab, setActiveTab] = useState("All");
+  
+
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -30,7 +44,6 @@ export default function StorePage() {
         const data = await response.json();
         console.log("Fetched data:", data);
         
-        // ✅ Correct extraction based on your actual structure
         const productsArray = data?.data?.data || [];
         setProducts(productsArray);
       } catch (err) {
@@ -60,8 +73,8 @@ export default function StorePage() {
 
   return (
     <>
-      <ProductGrid />
-      <ProductShowcase products={products} />
+      <ProductGrid tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <ProductShowcase products={products} tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
       <Footer />
     </>
   );

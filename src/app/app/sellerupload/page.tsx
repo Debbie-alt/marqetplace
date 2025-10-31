@@ -19,7 +19,6 @@ const SellerUploadPage = () => {
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
-      {/* Sidebar */}
       <div
         className={`fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-md transform 
         transition-transform duration-300 ease-in-out

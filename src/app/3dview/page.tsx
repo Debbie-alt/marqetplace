@@ -10,7 +10,7 @@ const ThreeDView = () => {
   return (  
     <>
     <section className='px-16 pt-6'>     
-    <TabNav/> 
+    {/* <TabNav/>  */}
      <ThreeDImages/>
     </section>
     <ProductDescription/>

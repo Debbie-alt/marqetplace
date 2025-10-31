@@ -6,7 +6,7 @@ import { MailsIcon, Upload } from "lucide-react";
 
 const ContactForm = () => {
   return (
-    <section className="bg-white py-10 px-6 md:px-20 lg:px-28 flex flex-col md:flex-row items-center justify-between rounded-lg shadow-sm">
+    <section className="bg-white py-10 px-6 md:px-20 lg:px-28 flex flex-col md:flex-row items-center justify-between rounded-lg mb-10">
       {/* Left Section */}
       <div className="w-full md:w-1/2 space-y-5">
         <h1 className="text-3xl font-semibold font-serif inline-flex items-center gap-2">
@@ -65,7 +65,7 @@ const ContactForm = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex gap-20 mt-10 ">
+          <div className="flex flex-col sm:flex-row md:gap-20 gap-4 mt-10 ">
             <button
               type="submit"
               className="bg-[#E8912E] text-white px-5 py-2.5 text-sm hover:bg-orange-600 transition-colors"

@@ -1,112 +1,137 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { Plus } from "lucide-react";
+import React, { useState } from 'react'
+import { Plus } from 'lucide-react'
+import toast, {Toaster} from 'react-hot-toast'
 
-const ProductUploadForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    category: "",
-    price: "",
-    colors: [] as string[],
-    nafdac: "",
-  });
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [preview, setPreview] = useState<string>("/greenfront.png");
+type FormShape = {
+  name: string
+  description: string
+  category: string
+  price: string
+  nafdac: string
+}
 
-  // handle text/select input
+const ProductUploadForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormShape>({
+    name: '',
+    description: '',
+    category: '',
+    price: '',
+    nafdac: '',
+  })
+  const [imageFile, setImageFile] = useState<File | null>(null)
+  const [preview, setPreview] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
+
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
-  // image upload
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImageFile(file);
-      setPreview(URL.createObjectURL(file));
-    }
-  };
-
-  // color picker
-  const handleColorAdd = (color: string) => {
-    if (!formData.colors.includes(color)) {
-      setFormData({ ...formData, colors: [...formData.colors, color] });
-    }
-  };
+    const file = e.target.files?.[0] ?? null
+    setImageFile(file)
+    setPreview(file ? URL.createObjectURL(file) : null)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Submitted!");
-  };
+    e.preventDefault()
+
+    if (!formData.name || !formData.price || !imageFile) {
+      toast.error('Please fill required fields and upload an image.')
+      return
+    }
+
+    setLoading(true)
+    try {
+      const data = new FormData()
+      data.append('name', formData.name)
+      data.append('description', formData.description)
+      data.append('category', formData.category)
+      data.append('price', formData.price)
+      data.append('nafdac', formData.nafdac)
+
+      data.append('thumbnail', imageFile)
+
+      const res = await fetch(
+        'https://marqet-place-api.onrender.com/api/v1/products/upload',
+        {
+          method: 'POST',
+          body: data, 
+        }
+      )
+
+      if (!res.ok) {
+        const text = await res.text().catch(() => null)
+        const errorMsg = text ? JSON.parse(text).message : null
+        toast.error(errorMsg ?? 'Something went wrong while uploading.')
+
+      }
+
+      const json = await res.json()
+      toast.success('Product uploaded successfully!')
+
+      setFormData({ name: '', description: '', category: '', price: '', nafdac: '' })
+      setImageFile(null)
+      setPreview(null)
+    } catch (err: any) {
+      // toast.error(errorMsg ?? 'Something went wrong while uploading.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="w-full px-10 py-8 flex flex-col gap-8"
-    >
-      {/* Header Button */}
-      <div className="flex justify-start">
+    <form onSubmit={handleSubmit} className="w-full px-10 py-8 flex flex-col gap-8">
+      <div className="flex justify-start gap-4">
         <button
           type="submit"
-          className="bg-sky-500 hover:bg-sky-600 text-white text-sm font-medium px-4 py-2 rounded"
+          disabled={loading}
+          className="bg-sky-500 hover:bg-sky-600 focus:outline-none text-white text-sm font-medium px-4 py-2 rounded disabled:opacity-60"
         >
-          Add New Product
+          {loading ? 'Uploading...' : 'Add Product'}
         </button>
       </div>
+            <Toaster position="top-right" reverseOrder={false} />
 
-      {/* Main Form Sections */}
-      <div className="flex items-start justify-between w-full">
-        {/* Left Section */}
-        <div className="w-[48%] space-y-4">
-          <h2 className="text-lg font-semibold">Description</h2>
+
+      <div className="flex flex-col md:flex-row items-start justify-between gap-10 w-full">
+        <div className=" w-full md:w-[48%] space-y-4">
+          <h2 className="text-xl font-medium">Description</h2>
 
           <div>
-            <label className="text-sm text-gray-700 font-medium">
-              Product Name :
-            </label>
+            <label className="text-sm text-gray-700 font-medium">Product Name :</label>
             <input
               type="text"
               name="name"
               placeholder="Hood E"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border border-gray-300 focus:outline-none rounded px-3 py-1 mt-1 text-sm"
+              className="w-full border border-gray-300 rounded px-3 py-1 mt-1 text-sm focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="text-sm text-gray-700 font-medium">
-              Product Description :
-            </label>
+            <label className="text-sm text-gray-700 font-medium">Product Description :</label>
             <textarea
               name="description"
-              placeholder="Stay warm and stylish with this soft, premium cotton-blend hoodie..."
+              placeholder="Stay warm and stylish..."
               value={formData.description}
               onChange={handleChange}
-              className="w-full border border-gray-300 focus:outline-none rounded px-3 py-1.5 mt-1 h-20 text-sm resize-none"
+              className="w-full border border-gray-300 rounded px-3 py-1.5 mt-1 h-20 text-sm resize-none focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="text-sm text-gray-700 font-medium">
-              Product Category :
-            </label>
+            <label className="text-sm text-gray-700 font-medium">Product Category :</label>
             <select
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full border border-gray-300 focus:outline-none rounded px-3 py-1.5 mt-1 text-sm"
+              className="w-full border border-gray-300 rounded px-3 py-1.5 mt-1 text-sm focus:outline-none"
             >
               <option value="">Select</option>
               <option value="Fashion">Fashion</option>
@@ -117,7 +142,7 @@ const ProductUploadForm = () => {
 
           <div className="flex items-center gap-3">
             <label className="text-sm text-gray-700 font-medium">Price →</label>
-            <div className="flex items-center border border-gray-300 focus:outline-none rounded px-2 py-1 w-28 justify-between">
+            <div className="flex items-center border border-gray-300 rounded px-2 py-1 w-28 justify-between">
               <span className="text-sm text-gray-700">₦</span>
               <input
                 type="number"
@@ -129,86 +154,58 @@ const ProductUploadForm = () => {
               <Plus className="w-4 h-4 text-gray-500" />
             </div>
           </div>
-
-          {/* Available Colors */}
-          <div>
-            <label className="text-sm text-gray-700 font-medium">
-              Available Colors :
-            </label>
-            <div className="flex items-center gap-2 mt-1">
-              {["#f00", "#007bff", "#000"].map((color) => (
-                <button
-                  key={color}
-                  type="button"
-                  className="w-5 h-5 rounded-full border border-gray-300 focus:outline-none"
-                  style={{ backgroundColor: color }}
-                  onClick={() => handleColorAdd(color)}
-                ></button>
-              ))}
-              <button
-                type="button"
-                onClick={() => alert("Add more colors")}
-                className="w-5 h-5 rounded-full border border-gray-400 flex items-center justify-center text-gray-600"
-              >
-                <Plus className="w-3 h-3" />
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* Right Section */}
-        <div className="w-[48%] space-y-3">
-          <h2 className="text-2xl font-medium">Verification</h2>
+        <div className=" w-full md:w-[48%] space-y-3">
+          <h2 className="text-xl font-medium">Verification</h2>
 
           <div>
-            <label className="text-sm text-gray-700 font-medium">
-              Upload Image :
-            </label>
+            <label className="text-sm text-gray-700 font-medium">Upload Image :</label>
             <input
               type="file"
               accept="image/*"
               onChange={handleImageChange}
               className="mt-2 block text-sm"
             />
-            <div className="w-40 h-40 bg-gray-100 mt-3 rounded flex items-center justify-center overflow-hidden border">
-              <img
-                src={preview || "/greenfront.png"} 
-                alt="Preview"
-                className="object-cover w-full h-full"
-              />
+            <div className="w-70 h-70 g-gray-100 mt-3 rounded flex items-center justify-center overflow-hidden border">
+              {preview ? (
+                <img src={preview} alt="Preview" className="object-cover w-full h-full" />
+              ) : (
+                <img
+                  src="/greenfront.jpg"
+                  alt="Placeholder"
+                  className="object-cover w-full h-full opacity-70"
+                />
+              )}
             </div>
           </div>
 
           <div>
-            <label className="text-sm text-gray-700 font-medium">
-              NAFDAC No :
-            </label>
+            <label className="text-sm text-gray-700 font-medium mt-4">NAFDAC No : </label>
             <input
               type="text"
               name="nafdac"
               placeholder="094748"
               value={formData.nafdac}
               onChange={handleChange}
-              className="border border-gray-300 focus:outline-none rounded px-2 py-1 ml-2 w-36 text-sm"
+              className="border border-gray-300 rounded px-4 py-2 md:ml-2  mt-3 md:mt-0 w-36 text-sm focus:outline-none"
             />
-            <p className="text-xs text-gray-500 mt-1">
-              Provide NAFDAC no as labelled in your product
-            </p>
+            <p className="text-xs text-gray-500 mt-1">Provide NAFDAC no as labelled in your product</p>
           </div>
 
           <div className="mt-4">
             <p className="text-sm text-gray-700 mb-2">Create 3D Prototype</p>
             <button
               type="button"
-              className="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center text-xs font-semibold"
+              className="w-10 h-10 hover:scale-110 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center text-xs font-semibold"
             >
-             <img src="/3d-proto.png" alt="" />
+              <img src="/3d-proto.png" alt="3D" />
             </button>
           </div>
         </div>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default ProductUploadForm;
+export default ProductUploadForm

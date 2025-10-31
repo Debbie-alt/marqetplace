@@ -2,47 +2,51 @@
 import { useState } from "react";
 import Image from "next/image";
 import { getAuth, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
-import { auth ,provider} from "@/config/firebaseConfig";
-import {useRouter} from "next/navigation";
+import { auth, provider } from "@/config/firebaseConfig";
+import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function SigninPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const  [email, setEmail]  = useState('');
-    const [password, setPassword] = useState('');
-const router   = useRouter()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
-
-  const handleSignin = async (e:React.FormEvent)=>  {
-       e.preventDefault()
-       try{
-        const userCredential = await signInWithEmailAndPassword(auth, email, password)
-        console.log('signedin', userCredential.user)
-        alert('signedin successfully')
-        router.push('/app/sellerupload')
-       }
-       catch (error: any) {
-      console.error(error)
-      alert(error.message)
+  const handleSignin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const loadingToast = toast.loading("Signing in...");
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Signed in successfully!");
+      toast.dismiss(loadingToast);
+      console.log("signedin", userCredential.user);
+      router.push("/app/sellerupload");
+    } catch (error: any) {
+      toast.dismiss(loadingToast);
+      toast.error(error.message || "Sign in failed");
+      console.error(error);
     }
+  };
 
-  }
-  const googleSignin  =  async ()  =>{
-     try {
-    const result = await signInWithPopup(auth, provider)
-    console.log('Google signed in:', result.user)
-    alert(`Welcome ${result.user.displayName}`)
-    router.push('/app/sellerupload')
-  } catch (error: any) {
-    console.error(error)
-    alert(error.message)
-  }
-  }
+  const googleSignin = async () => {
+    const loadingToast = toast.loading("Signing in with Google...");
+    try {
+      const result = await signInWithPopup(auth, provider);
+      toast.dismiss(loadingToast);
+      toast.success(`Welcome ${result.user.displayName || "back"}!`);
+      console.log("Google signed in:", result.user);
+      router.push("/app/sellerupload");
+    } catch (error: any) {
+      toast.dismiss(loadingToast);
+      toast.error(error.message || "Google sign-in failed");
+      console.error(error);
+    }
+  };
 
   return (
- <div
-  className=" px-4 md:px-16 py-26 md:py-6 relative min-h-screen bg-cover  bg-no-repeat"
-          style={{
+    <div
+      className="px-4 md:px-16 py-7 md:py-6 relative min-h-screen bg-cover bg-no-repeat"
+      style={{
         backgroundImage: `
           linear-gradient(
             to top right,
@@ -52,59 +56,53 @@ const router   = useRouter()
           url('/signup.png')
         `,
       }}
->
-      {/* Top Navigation */}
-      <nav className="flex flex-col sm:flex-row gap-4  w-fit items-center text-white md:gap-10">
+    >
+      <Toaster position="top-right" reverseOrder={false} />
+
+      <nav className="flex flex-col sm:flex-row gap-4 w-fit items-center text-white md:gap-10">
         <div>
           <div className="logo flex gap-3 items-center">
             <div className="px-2 py-1 font-semibold text-3xl bg-[#2D2C2C] text-[#8FD7ED]">
               M
             </div>
-            <h3 className=" text-xl sm:text-2xl font-semibold text-white">
+            <h3 className="text-xl sm:text-2xl font-semibold text-white">
               Marqetplace
             </h3>
           </div>
         </div>
-        <a href="/store" className="ml-auto text-sm sm:text-base text-center text-white hover:underline">
+        <a
+          href="/store"
+          className="ml-auto text-sm sm:text-base text-center text-white hover:underline"
+        >
           Sell on Marqetplace
         </a>
       </nav>
 
-      {/* Main Content */}
       <div className="min-h-[90vh] flex items-center justify-center bg-[#8FD7ED0D]">
-        <div className="flex w-full mx-auto justify-center  ">
-          {/* Left side */}
-          
-          <div className="bg-white shadow-lg px-5 sm:px-10 mt-6 md:mt-0 md:px-14 py-16  w-full max-w-xl rounded-md">
+        <div className="flex w-full mx-auto justify-center">
+          <div className="bg-white shadow-lg px-5 sm:px-10 mt-6 md:mt-0 md:px-14 py-16 w-full max-w-xl rounded-md">
             <h2 className="text-4xl font-medium text-gray-900 mb-2 text-center">
-             Sign In
+              Sign In
             </h2>
             <p className="text-gray-600 text-sm mb-6">
-             Welcome Back to Marqetplace!
+              Welcome Back to Marqetplace!
             </p>
 
-            <form className="  space-y-4" onSubmit={handleSignin}>
-              
-
+            <form className="space-y-4" onSubmit={handleSignin}>
               <input
                 type="email"
-                  value={email}
-                  onChange={(e)=> {
-                     setEmail(e.target.value)
-                  }}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Hedera ID/Email"
                 className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
               />
 
-              {/* Password */}
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   value={password}
-                  onChange={(e)=> {
-                     setPassword(e.target.value)
-                  }}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
                 />
                 <button
@@ -116,8 +114,6 @@ const router   = useRouter()
                 </button>
               </div>
 
-             
-
               <button
                 type="submit"
                 className="w-fit flex items-center self-center px-10 mb-2 mt-8 bg-[#E8912E] text-white py-2 mx-auto text-lg rounded-full font-medium hover:bg-yellow-600 transition"
@@ -128,26 +124,26 @@ const router   = useRouter()
 
             <div className="text-center flex items-center gap-4">
               <hr className="w-full border-gray-400 mt-6" />
-              <span className="text-gray-500 mt-6">
-                 OR
-                 </span>
+              <span className="text-gray-500 mt-6">OR</span>
               <hr className="w-full border-gray-400 mt-6" />
             </div>
 
-            <button onClick={googleSignin} className="flex items-center justify-center gap-2  mt-6 w-3/4 mx-auto py-2 px-2 border border-gray-700 rounded-full shadow  bg-gray-50">
+            <button
+              onClick={googleSignin}
+              className="flex items-center justify-center gap-2 mt-6 w-3/4 mx-auto py-2 px-2 border border-gray-700 rounded-full shadow bg-gray-50"
+            >
               <Image src="/google.png" alt="Google" width={25} height={25} />
-              <span className="text-gray-700 hover:opacity-80  text-center font-medium">
+              <span className="text-gray-700 hover:opacity-80 text-center font-medium">
                 Sign In with Google
               </span>
             </button>
+
             <div className="text-sm text-gray-600 mt-12 text-center">
               Don't have an account?{" "}
               <a href="/signup" className="text-[#2BBCE8] hover:underline">
-                Sign up 
+                Sign up
               </a>
             </div>
-
-           
           </div>
         </div>
 

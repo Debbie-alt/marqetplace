@@ -11,9 +11,12 @@ type Product = {
 
 type ProductShowcaseProps = {
   products: Product[];
+  tabs:string[];
+  activeTab: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products }) => {
+const ProductShowcase: React.FC<ProductShowcaseProps> = ({products, tabs, activeTab, setActiveTab} :ProductShowcaseProps) => {
   return (
     <section className="flex flex-col justify-center">
       <div className="px-6 md:px-14 py-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -32,7 +35,6 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products }) => {
                 <ShoppingCart size={30} className="text-gray-800" role="button" />
               </div>
 
-              {/* Product image */}
               <div className="w-full h-64 flex flex-col items-center justify-center mb-3 relative">
                 <img
                   src={product.thumbnail || "/outfit.png"}
@@ -44,13 +46,11 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products }) => {
                 </div>
               </div>
 
-              {/* Product Info */}
               <div className="flex flex-col gap-1">
                 <p className="text-gray-900 font-semibold">${product.price}</p>
                 <p className="text-sm text-gray-700 truncate">{product.name}</p>
                 <p className="text-xs text-gray-500">Reviews: ⭐⭐⭐⭐☆</p>
               </div>
-              {/* Button + 3D Icon */}
               <div className="flex flex-col md:flex-row items-end justify-center w-full gap-3" role="button">
                 <button className="mt-6 bg-[#294952] cursor-pointer text-white py-2 w-full md:w-3/4 px-6 rounded-md text-xs sm:text-sm font-medium hover:bg-[#1f373e]">
                   Add to Cart

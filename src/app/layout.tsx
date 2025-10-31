@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "./components/Homepage/Navbar";
 import { usePathname } from "next/navigation";
 import { AuthProvider } from "@/context/Authcontext";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,7 @@ export default function RootLayout({
   const pathname = usePathname();
 
   const showBanner = pathname === "/store";
-  const showNavbar = pathname !== "/signup" && pathname !== '/signin' && pathname !== '/app/sellerupload'; // hide on /signup
+  const showNavbar = pathname !== "/signup" && pathname !== '/signin' && pathname !== '/app/sellerupload' ; 
 
   return (
     <AuthProvider>
@@ -38,6 +39,8 @@ export default function RootLayout({
         )}
         {showNavbar && <Navbar />}
         {children}
+         <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+
       </body>
     </html>
     </AuthProvider>
