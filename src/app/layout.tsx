@@ -7,6 +7,7 @@ import Navbar from "./components/Homepage/Navbar";
 import { usePathname } from "next/navigation";
 import { AuthProvider } from "@/context/Authcontext";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +18,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+ const client = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -29,6 +32,7 @@ export default function RootLayout({
   const showNavbar = pathname !== "/signup" && pathname !== '/signin' && pathname !== '/app/sellerupload' ; 
 
   return (
+    <QueryClientProvider client={client}>
     <AuthProvider>
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
@@ -44,5 +48,6 @@ export default function RootLayout({
       </body>
     </html>
     </AuthProvider>
+    </QueryClientProvider>
   );
 }

@@ -11,7 +11,6 @@ const Sidebar = () => {
   const pathname = usePathname()
   const user = useAuth()
 
-  // Track which dropdowns are open
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
 
   const toggleSection = (title: string) => {

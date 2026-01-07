@@ -1,9 +1,11 @@
-'use client'
+'use client';
+
 import Footer from "../components/Homepage/Footer";
 import ProductGrid from "../components/Store/ProductGrid";
 import ProductShowcase from "../components/Store/ProductShowcase";
-import RootLayout from "../layout"; 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
 
 type Product = {
   id: string;
@@ -16,7 +18,7 @@ type Product = {
   updatedAt: string;
 };
 
-  const tabs :string []= [
+const tabs: string[] = [
   "All",
   "Fashion",
   "Cloth",
@@ -26,55 +28,56 @@ type Product = {
   "Devices",
 ];
 
-export default function StorePage() { 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [errMsg, setErrMsg] = useState('');
 
+export default function StorePage() {
   const [activeTab, setActiveTab] = useState("All");
-  
 
-  
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('https://marqet-place-api.onrender.com/api/v1/products?page=1&limit=10');
-        const data = await response.json();
-        console.log("Fetched data:", data);
-        
-        const productsArray = data?.data?.data || [];
-        setProducts(productsArray);
-      } catch (err) {
-        console.error(err);
-        setError(true);
-        setErrMsg('Failed to fetch products. Please try again later.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+  const {
+    data: products = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+    staleTime: 1000 * 60 * 5, 
+    retry: 2,
+  });
 
-  if (loading)
+
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-white">
-        <div className="w-12 h-12 border-4 border-gray-300 border-t-[#294952] rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-gray-300 border-t-[#294952] rounded-full animate-spin" />
       </div>
     );
+  }
 
-  if (error)
+  if (isError) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-700 text-lg">{errMsg}</p>
+        <p className="text-gray-700 text-lg">
+          {(error as Error).message || "Something went wrong"}
+        </p>
       </div>
     );
+  }
 
   return (
     <>
-      <ProductGrid tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-      <ProductShowcase products={products} tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <ProductGrid
+        tabs={tabs}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
+
+      <ProductShowcase
+        products={products}
+        tabs={tabs}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
+
       <Footer />
     </>
   );
