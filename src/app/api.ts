@@ -1,4 +1,6 @@
-const fetchProducts = async () => {
+import { fileToBase64 } from "./helpers";
+
+export const fetchProducts = async () => {
   const res = await fetch(
     "https://marqet-place-api.onrender.com/api/v1/products?page=1&limit=10"
   );
@@ -10,3 +12,36 @@ const fetchProducts = async () => {
   const data = await res.json();
   return data?.data?.data ?? [];
 };
+
+export const generatemodel = async (imageFile:File | null)=> {
+    const API_KEY = 'msy_dummy_api_key_for_test_mode_12345678'
+   const base64 = await fileToBase64(imageFile);
+
+const headers = { Authorization: `Bearer ${API_KEY}` };
+const payload = {
+  image_url: base64,
+  enable_pbr: true,
+  should_remesh: true,
+  should_texture: true,
+  save_pre_remeshed_model: true
+};
+
+try {
+  const response = await fetch('https://api.meshy.ai/openapi/v1/image-to-3d', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...headers,
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+}
+
+// msy_d7yRz2WlWIGOY6rvSE5ilMBWCs8523VKiAS7
+

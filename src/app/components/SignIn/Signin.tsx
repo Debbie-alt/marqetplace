@@ -93,7 +93,7 @@ export default function SigninPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Hedera ID/Email"
+                placeholder="Email Address"
                 className="w-full px-3 py-2 bg-[#8FD7ED33] border-b border-b-gray-400 focus:outline-none rounded-md"
               />
 

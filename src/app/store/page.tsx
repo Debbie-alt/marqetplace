@@ -5,7 +5,7 @@ import ProductGrid from "../components/Store/ProductGrid";
 import ProductShowcase from "../components/Store/ProductShowcase";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-
+import { fetchProducts } from "../api";
 
 type Product = {
   id: string;

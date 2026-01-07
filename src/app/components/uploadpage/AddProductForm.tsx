@@ -3,6 +3,8 @@
 import React, { useState } from 'react'
 import { Plus } from 'lucide-react'
 import toast, {Toaster} from 'react-hot-toast'
+import { useQuery } from '@tanstack/react-query'
+import { generatemodel } from '@/app/api'
 
 type FormShape = {
   name: string
@@ -24,7 +26,7 @@ const ProductUploadForm: React.FC = () => {
   const [preview, setPreview] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
-  const handleChange = (
+ const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
@@ -44,6 +46,23 @@ const ProductUploadForm: React.FC = () => {
       toast.error('Please fill required fields and upload an image.')
       return
     }
+
+
+
+  
+
+ const {
+    isLoading,
+    // isError,
+    // error,
+  } = useQuery({
+    queryKey: ['model', imageFile],
+  queryFn: () => generatemodel(imageFile),
+  enabled: !!imageFile,
+    staleTime: 1000 * 60 * 5, 
+    retry: 2,
+  });
+
 
     setLoading(true)
     try {
@@ -83,6 +102,7 @@ const ProductUploadForm: React.FC = () => {
       setLoading(false)
     }
   }
+
 
   return (
     <form onSubmit={handleSubmit} className="w-full px-10 py-8 flex flex-col gap-8">
@@ -197,6 +217,7 @@ const ProductUploadForm: React.FC = () => {
             <p className="text-sm text-gray-700 mb-2">Create 3D Prototype</p>
             <button
               type="button"
+              onClick={() =>  generatemodel(imageFile)}
               className="w-10 h-10 hover:scale-110 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center text-xs font-semibold"
             >
               <img src="/3d-proto.png" alt="3D" />
