@@ -14,7 +14,7 @@ export const fetchProducts = async () => {
 };
 
 export const generatemodel = async (imageFile:File | null)=> {
-    const API_KEY = 'msy_dummy_api_key_for_test_mode_12345678'
+    const API_KEY = process.env.MESY_API_KEY
    const base64 = await fileToBase64(imageFile);
 
 const headers = { Authorization: `Bearer ${API_KEY}` };
@@ -43,5 +43,4 @@ try {
 }
 }
 
-// msy_d7yRz2WlWIGOY6rvSE5ilMBWCs8523VKiAS7
 
