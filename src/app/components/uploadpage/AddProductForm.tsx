@@ -47,10 +47,6 @@ const ProductUploadForm: React.FC = () => {
       return
     }
 
-
-
-  
-
  const {
     isLoading,
     // isError,
@@ -102,7 +98,6 @@ const ProductUploadForm: React.FC = () => {
       setLoading(false)
     }
   }
-
 
   return (
     <form onSubmit={handleSubmit} className="w-full px-10 py-8 flex flex-col gap-8">
