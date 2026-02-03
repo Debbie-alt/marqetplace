@@ -73,6 +73,7 @@ export default function FeaturedCategories() {
             width={30}
             height={30}
             className="mt-2"
+            role="button"
           />
           </div>
         ))}

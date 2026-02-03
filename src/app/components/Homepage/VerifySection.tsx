@@ -12,7 +12,7 @@ export default function VerifiedSection() {
         <p className="text-gray-600 mb-8">
           Tap into our NAFDAC-linked verification and know if your product is the real deal every time.
         </p>
-        <button className="bg-[#E8912E] hover:bg-[#E8912E]/90 text-white font-semibold px-6 py-3  shadow-md transition" role="button">
+        <button className="bg-[#E8912E] rounded-full hover:bg-[#E8912E]/90 text-white font-semibold px-6 py-3  shadow-md transition" role="button">
           VERIFY A PRODUCT
         </button>
       </div>
