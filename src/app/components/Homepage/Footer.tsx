@@ -67,15 +67,10 @@ export default function Footer() {
   </svg>
 </div>
 
-
-
-
-
-
       {/* Bottom legal section */}
      
     </footer>
-     <div className="rela bg-white py-6 px-4 md:px-26">
+     <div className="relative bg-white py-6 px-4 md:px-26">
         <p className="text-gray-600">Marqetplace &copy; All rights reserved</p>
       </div>
       </>
